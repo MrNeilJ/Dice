@@ -6,12 +6,12 @@
 #include <string>
 
 Players::Players(int sides, bool loadedDie) {
-	if (loadedDie) {
+	if (!loadedDie) {
 		playerDie = new Die(sides);
 		diceType = "Standard Dice";
 	}
 	else {
-		loadedPlayer = new LoadedDie(sides);
+		playerDie = new LoadedDie(sides);
 		diceType = "Loaded Dice";
 	}
 

@@ -14,6 +14,6 @@ Die::Die(int userN) {
 }
 
 int Die::Roll() {
-
-	return  (rand() % n) + 1;
+	int temp = (rand() % n) + 1;
+	return  temp;
 }

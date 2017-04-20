@@ -29,7 +29,7 @@ public:
 
 	int getRollAt(int rollRequest);
 
-	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> getDiceType();
+	std::string getDiceType();
 };
 
 
