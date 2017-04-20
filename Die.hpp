@@ -1,0 +1,20 @@
+//
+// Created by Neil Johnson on 4/18/17.
+//
+
+#ifndef DICE_DIE_HPP
+#define DICE_DIE_HPP
+
+
+class Die {
+private:
+int n; // Number of sides
+
+public:
+	Die();
+	Die(int);
+	int Roll();
+};
+
+
+#endif //DICE_DIE_HPP
