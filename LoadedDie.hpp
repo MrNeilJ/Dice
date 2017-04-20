@@ -16,10 +16,10 @@ private:
 public:
 	LoadedDie();
 	LoadedDie(int);
-	int roll();
+	int Roll();
 
 
-
+	int LoadedRoll();
 };
 
 

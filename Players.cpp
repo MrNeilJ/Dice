@@ -31,7 +31,13 @@ void Players::addRoll(int userRoll) {
 }
 
 int Players::rollDice() {
-	return playerDie->Roll();
+	if(diceType == "Standard Dice"){
+		return playerDie->Roll();
+	}
+	else
+	{
+		return  loadedDie->LoadedRoll();
+	}
 }
 
 int Players::getRollAt(int rollRequest) {

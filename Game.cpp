@@ -23,6 +23,10 @@ void Game::match() {
 	if (playerOneRoll > playerTwoRoll) {
 		players[0]->wonRound();
 	}
+	else if (playerOneRoll == playerTwoRoll) {
+		players[0]->wonRound();
+		players[1]->wonRound();
+	}
 	else {
 		players[1]->wonRound();
 	}
@@ -35,6 +39,7 @@ void Game::play() {
 }
 
 void Game::results() {
+	int winningPlayer;
 
 	for(int i = 0; i < 2; i++) {
 		std::cout << "Player " << i + 1 << std::endl;
@@ -46,7 +51,6 @@ void Game::results() {
 		std::cout << "\n-------------------------------------" << std::endl;
 		std::cout << std::endl;
 	}
-	int winningPlayer;
 	if (players[0]->getWins() > players[1]->getWins()) {
 		winningPlayer = 1;
 	}

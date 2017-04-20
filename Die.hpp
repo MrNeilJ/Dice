@@ -8,7 +8,7 @@
 
 class Die {
 private:
-int n; // Number of sides
+int n;
 
 public:
 	Die();

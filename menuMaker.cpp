@@ -157,13 +157,14 @@ int menuMaker::getMenuSize() {
  * It then asks the user for a numerical response.
 **************************************************************/
 void menuMaker::prompt(int x) {
-	int userResponse;
+	int userResponse = 0;
 
 	do {
 		std::cout << initQues << std::endl;
 		std::cout << "\nUser Choice: " << std::endl;
 
 		userResponse = numberValidator();
+		response = userResponse;
 
 		if (userResponse < x) {
 			std::cout << "Number is too low, please try again!\n" << std::endl;
