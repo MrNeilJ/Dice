@@ -72,6 +72,7 @@ int main() {
 		}
 		else if (turnsAnswer == 2) {
 			std::cout << "\nI like to keep things simple too, turns has been set to 10" << std::endl;
+			turns = 10;
 		}
 		else {
 			std::cout << "\nWhoops, I don't know that kind of number, try again please!" << std::endl;
