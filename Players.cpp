@@ -7,11 +7,11 @@
 
 Players::Players(int sides, bool loadedDie) {
 	if (!loadedDie) {
-		playerDie = new Die(sides);
+		playerDie = std::make_shared<Die>(sides);
 		diceType = "Standard Dice";
 	}
 	else {
-		playerDie = new LoadedDie(sides);
+		playerDie =  std::make_shared<LoadedDie>(sides);
 		diceType = "Loaded Dice";
 	}
 
@@ -31,12 +31,13 @@ void Players::addRoll(int userRoll) {
 }
 
 int Players::rollDice() {
+
 	if(diceType == "Standard Dice"){
 		return playerDie->Roll();
 	}
 	else
 	{
-		return  loadedDie->LoadedRoll();
+		return std::static_pointer_cast<LoadedDie>(playerDie)->Roll();
 	}
 }
 
@@ -46,4 +47,8 @@ int Players::getRollAt(int rollRequest) {
 
 std::string Players::getDiceType() {
 	return diceType;
+}
+
+void Players::clearDie() {
+	playerDie.reset();
 }

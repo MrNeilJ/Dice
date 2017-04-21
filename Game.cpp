@@ -69,3 +69,14 @@ void Game::makePlayer(int playerInput, int userSides, bool userLoaded){
 	players[playerInput] = new Players(userSides, userLoaded);
 }
 
+void Game::clearBoard() {
+	// Delete object stored in playerDie for each player
+	players[0]->clearDie();
+	players[1]->clearDie();
+
+	delete[] *players;
+
+
+}
+
+

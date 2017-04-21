@@ -10,6 +10,7 @@ int main() {
 	int welcomeAnswer = 0;
 	int turnsAnswer = 0;
 	int turns = 0;
+	int playAgain = 0;
 
     std::cout << "*==============================*" << std::endl;
     std::cout << "*           Die Game           *" << std::endl;
@@ -49,76 +50,86 @@ int main() {
 	} while(welcomeAnswer != 1);
 
 
-
-	/********************************
-	 * QUESTION 2: TURN TIME
-	 ********************************/
-	menuMaker turnsMenu("First off, how many rounds would you like to play?",
-						"Set your own amount of turns? (number value greater than 0)",
-						"Use the default amount of rounds? (Default is 10 Rounds");
-	turnsMenu.prompt();
-
 	do {
-		turnsAnswer = turnsMenu.getResponse();
-		if (turnsAnswer == 3) {
-			return 0;
+
+
+		/********************************
+		 * QUESTION 2: TURN TIME
+		 ********************************/
+		menuMaker turnsMenu("First off, how many rounds would you like to play?",
+							"Set your own amount of turns? (number value greater than 0)",
+							"Use the default amount of rounds? (Default is 10 Rounds");
+		turnsMenu.prompt();
+
+		do {
+			turnsAnswer = turnsMenu.getResponse();
+			if (turnsAnswer == 3) {
+				return 0;
+			} else if (turnsAnswer == 1) {
+				do {
+					std::cout << "\nSounds good to me, how many turns would you like? \nUser Choice: ";
+					turns = numberValidator();
+				} while (turns <= 0);
+				std::cout << "\nSetting turns to " << turns << ". Thank you." << std::endl;
+			} else if (turnsAnswer == 2) {
+				std::cout << "\nI like to keep things simple too, turns has been set to 10" << std::endl;
+				turns = 10;
+			} else {
+				std::cout << "\nWhoops, I don't know that kind of number, try again please!" << std::endl;
+				turnsMenu.prompt();
+			}
+		} while (turnsAnswer < 1 || turnsAnswer > 3);
+
+		Game gameTime(turns);
+
+		/********************************
+		 * QUESTION 3: PLAYER CREATION
+		 ********************************/
+		menuMaker playerSides("how many sides will their Dice have?");
+		menuMaker playerDieType("is their dice loaded?", "Yes, of course!", "No never! Keeping it fair!");
+		int sides = 0;
+		int playerDie = 0;
+		bool isLoaded = false;
+
+
+		std::cout << "Time to build our players!" << std::endl;
+		for (int i = 0; i < 2; i++) {
+			std::cout << "For player " << i + 1 << ", ";
+			playerSides.prompt(-1);
+			sides = playerSides.getResponse();
+
+			std::cout << "and as for Player " << i + 1 << " dice...";
+			playerDieType.prompt();
+			playerDie = playerDieType.getResponse();
+
+			if (playerDie == 1) {
+				isLoaded = true;
+			} else {
+				isLoaded = false;
+			}
+
+			gameTime.makePlayer(i, sides, isLoaded);
+
 		}
-		else if (turnsAnswer == 1) {
-			do {
-				std::cout << "\nSounds good to me, how many turns would you like? \nUser Choice: ";
-				turns = numberValidator();
-			} while(turns <= 0);
-			std::cout << "\nSetting turns to " << turns << ". Thank you." << std::endl;
-		}
-		else if (turnsAnswer == 2) {
-			std::cout << "\nI like to keep things simple too, turns has been set to 10" << std::endl;
-			turns = 10;
-		}
-		else {
-			std::cout << "\nWhoops, I don't know that kind of number, try again please!" << std::endl;
-			turnsMenu.prompt();
-		}
-	} while(turnsAnswer < 1 || turnsAnswer > 3);
-
-	Game gameTime(turns);
-
-	/********************************
-	 * QUESTION 3: PLAYER CREATION
-	 ********************************/
-	menuMaker playerSides("how many sides will their Dice have?");
-	menuMaker playerDieType("is their dice loaded?", "Yes, of course!", "No never! Keeping it fair!");
-	int sides = 0;
-	int playerDie = 0;
-	bool isLoaded = false;
 
 
-	std::cout << "Time to build our players!" << std::endl;
-	for (int i = 0; i < 2; i++) {
-		std::cout << "For player " << i+1 << ", ";
-		playerSides.prompt(-1);
-		sides = playerSides.getResponse();
+		/********************************
+		 * GAME CREATION TIME!
+		 ********************************/
+		std::cout << "\n\nThe Results are in! Here they are:\n" << std::endl;
+		gameTime.begin();
 
-		std::cout << "and as for Player " << i+1 << " dice...";
-		playerDieType.prompt();
-		playerDie = playerDieType.getResponse();
+		/********************************
+		 * QUESTION: PLAY AGAIN?
+		 ********************************/
+		menuMaker playMenu("Would you like to play again?", "Yes", "No");
+		playMenu.prompt();
+		playAgain = playMenu.getResponse();
 
-		if (playerDie == 1) {
-			isLoaded = true;
-		}
-		else {
-			isLoaded = false;
-		}
-
-	 	gameTime.makePlayer(i, sides, isLoaded);
-
-	 }
+		gameTime.clearBoard();
+	}while(playAgain == 1);
 
 
-	/********************************
-	 * GAME CREATION TIME!
-	 ********************************/
-	 std::cout << "\n\nThe Results are in! Here they are:\n" << std::endl;
-	 gameTime.begin();
 
 
     return 0;

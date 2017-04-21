@@ -13,7 +13,7 @@ int n;
 public:
 	Die();
 	Die(int);
-	int Roll();
+	virtual int Roll();
 };
 
 

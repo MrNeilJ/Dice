@@ -23,6 +23,7 @@ public:
 	void results();
 	void begin();
 	void makePlayer(int playerInput, int userSides, bool userLoaded);
+	void clearBoard();
 };
 
 

@@ -17,8 +17,7 @@ public:
 	LoadedDie();
 	LoadedDie(int);
 
-
-	int LoadedRoll();
+	int Roll();
 };
 
 
