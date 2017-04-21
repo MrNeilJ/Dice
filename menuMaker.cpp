@@ -161,7 +161,7 @@ void menuMaker::prompt(int x) {
 
 	do {
 		std::cout << initQues << std::endl;
-		std::cout << "\nUser Choice: " << std::endl;
+		std::cout << "\nUser Choice: ";
 
 		userResponse = numberValidator();
 		response = userResponse;

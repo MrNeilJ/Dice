@@ -54,10 +54,18 @@ void Game::results() {
 	if (players[0]->getWins() > players[1]->getWins()) {
 		winningPlayer = 1;
 	}
+	else if(players[0]->getWins() == players[1]->getWins()){
+		winningPlayer = 3;
+	}
 	else {
 		winningPlayer = 2;
 	}
-	std::cout << "The winner is Player " << winningPlayer << ". Congratulations!!" << std::endl;
+	if (winningPlayer == 1 || winningPlayer == 2) {
+		std::cout << "The winner is Player " << winningPlayer << ". Congratulations!!" << std::endl;
+	}
+	else {
+		std::cout << "By some amazing feet, the game has come to a draw!!" << std::endl;
+	}
 }
 
 void Game::begin() {
@@ -69,14 +77,11 @@ void Game::makePlayer(int playerInput, int userSides, bool userLoaded){
 	players[playerInput] = new Players(userSides, userLoaded);
 }
 
-void Game::clearBoard() {
-	// Delete object stored in playerDie for each player
-	players[0]->clearDie();
-	players[1]->clearDie();
-
-	delete[] *players;
-
-
+Game::~Game() {
+	delete players[0];
+	delete players[1];
+	players[0] = nullptr;
+	players[1] = nullptr;
 }
 
 

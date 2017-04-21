@@ -16,7 +16,6 @@ private:
 public:
 	LoadedDie();
 	LoadedDie(int);
-
 	int Roll();
 };
 

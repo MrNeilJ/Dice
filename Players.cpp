@@ -49,6 +49,7 @@ std::string Players::getDiceType() {
 	return diceType;
 }
 
-void Players::clearDie() {
+Players::~Players() {
 	playerDie.reset();
+	playerDie = nullptr;
 }

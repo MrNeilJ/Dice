@@ -1,5 +1,5 @@
 output: main.o Game.o Players.o Die.o LoadedDie.o menuMaker.o validator.o
-	g++ main.o Board.o menuMaker.o validator.o -std=c++11 -o output
+	g++ main.o Game.o Players.o Die.o LoadedDie.o menuMaker.o validator.o -std=c++11 -o output
 
 main.o: main.cpp
 	g++ -std=c++11 -c main.cpp

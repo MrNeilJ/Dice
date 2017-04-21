@@ -23,9 +23,9 @@ int main() {
 	/********************************
 	 *  QUESTION 1: ARE YOU READY?
 	 ********************************/
-	std::string WelcomeQuestion =   "There are two players in this game (Player 1, and Player 2).  The game is simple,\n"
-									"it is played in rounds where each player will roll their dice, and the one with\n:"
-									"the higher number wins that round. The one to win the most rounds wins!\n\n"
+	std::string WelcomeQuestion =   "There are two players in this game (Player 1, and Player 2).  The game is simple,"
+									"it is played in rounds where each player will roll their dice, and the one with"
+									" the higher number wins that round. The one to win the most rounds wins!\n\n"
 									"Are you ready to proceed?";
 
     menuMaker welcomeMenu(WelcomeQuestion, "Yes", "No");
@@ -58,7 +58,7 @@ int main() {
 		 ********************************/
 		menuMaker turnsMenu("First off, how many rounds would you like to play?",
 							"Set your own amount of turns? (number value greater than 0)",
-							"Use the default amount of rounds? (Default is 10 Rounds");
+							"Use the default amount of rounds? (Default is 10 Rounds)");
 		turnsMenu.prompt();
 
 		do {
@@ -104,7 +104,11 @@ int main() {
 
 			if (playerDie == 1) {
 				isLoaded = true;
-			} else {
+			}
+			else if (playerDie == 3) {
+				return 0;
+			}
+			 else {
 				isLoaded = false;
 			}
 
@@ -122,11 +126,14 @@ int main() {
 		/********************************
 		 * QUESTION: PLAY AGAIN?
 		 ********************************/
-		menuMaker playMenu("Would you like to play again?", "Yes", "No");
+		menuMaker playMenu("\nWould you like to play again?", "Yes", "No");
 		playMenu.prompt();
 		playAgain = playMenu.getResponse();
 
-		gameTime.clearBoard();
+		if (playAgain == 3) {
+			return 0;
+		}
+
 	}while(playAgain == 1);
 
 
