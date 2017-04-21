@@ -14,7 +14,7 @@ LoadedDie::LoadedDie(int sides) {
 	loadedNumber = (rand() % (sides - 1)) + 1;
 }
 
-int LoadedDie::Roll() {
+/*int LoadedDie::Roll() {
 	int temp = (rand() % ((n * 2) - 1) ) + 1;
 	if (temp > n) {
 		return  loadedNumber;
@@ -24,9 +24,10 @@ int LoadedDie::Roll() {
 	}
 
 }
+*/
 
 int LoadedDie::LoadedRoll() {
-	int temp = (rand() % ((n * 2) - 1) ) + 1;
+	int temp = rand() % ((n * 2) - 1) + 1;
 	if (temp > n) {
 		return  loadedNumber;
 	}

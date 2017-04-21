@@ -15,8 +15,8 @@ class Players {
 private:
 	int wins = 0;						// This stores the amount of wins the player earned
 	std::vector<int>Rolls;				// This stores each roll the player makes
-	Die *playerDie = NULL;				// Pointer to a die class
-	LoadedDie *loadedDie = NULL;
+	Die *playerDie;				// Pointer to a die class
+	LoadedDie *loadedDie;
 	std::string diceType;
 
 public:

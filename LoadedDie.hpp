@@ -10,13 +10,12 @@
 
 class LoadedDie : public Die {
 private:
-	int n;
+	int n = -1;
 	int loadedNumber = rand() % n;
 
 public:
 	LoadedDie();
 	LoadedDie(int);
-	int Roll();
 
 
 	int LoadedRoll();
