@@ -1,3 +1,17 @@
+/**************************************************************
+ * Author: Neil Johnson
+ *
+ * Date: 4.23.2017
+ *
+ * Description: This is the main class for the Dice program.
+ * In here we build the main components of the application by
+ * asking questions and having the user answer them.  These
+ * questions consist of amount of turns, dice type, and sides
+ * of the dice.  Once we have pulled this information from the
+ * user it executes another class that plays the dice game for
+ * us.
+**************************************************************/
+
 #include <iostream>
 #include "menuMaker.hpp"
 #include "validator.hpp"
