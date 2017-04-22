@@ -102,7 +102,6 @@ void menuMaker::prompt() {
 			std::cout << "4) " << menuFour << std::endl;
 			count++;
 		}
-		std::cout << count << ") Quit Program." << std::endl;
 
 		std::cout << "\nUser Choice: ";
 
@@ -134,7 +133,7 @@ int menuMaker::getResponse() {
  * items there are.
 **************************************************************/
 int menuMaker::getMenuSize() {
-	int count = 1;
+	int count = 01;
 	if (!(menuOne == "")) {
 		count++;
 	}

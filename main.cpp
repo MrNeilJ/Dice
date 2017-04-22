@@ -23,8 +23,8 @@ int main() {
 	/********************************
 	 *  QUESTION 1: ARE YOU READY?
 	 ********************************/
-	std::string WelcomeQuestion =   "There are two players in this game (Player 1, and Player 2).  The game is simple,"
-									"it is played in rounds where each player will roll their dice, and the one with"
+	std::string WelcomeQuestion =   "There are two players in this game (Player 1, and Player 2).  The game is simple,\n"
+									"it is played in rounds where each player will roll their dice, and the one with\n"
 									" the higher number wins that round. The one to win the most rounds wins!\n\n"
 									"Are you ready to proceed?";
 
@@ -33,10 +33,7 @@ int main() {
 
 	do {
 		welcomeAnswer = welcomeMenu.getResponse();
-		if (welcomeAnswer == 3) {
-			return 0;
-		}
-		else if (welcomeAnswer == 2) {
+		if (welcomeAnswer == 2) {
 			std::cout << "Confused? Here is the prompt again!\n" << std::endl;
 			welcomeMenu.prompt();
 		}
@@ -63,18 +60,21 @@ int main() {
 
 		do {
 			turnsAnswer = turnsMenu.getResponse();
-			if (turnsAnswer == 3) {
-				return 0;
-			} else if (turnsAnswer == 1) {
+
+			if (turnsAnswer == 1) {
 				do {
 					std::cout << "\nSounds good to me, how many turns would you like? \nUser Choice: ";
 					turns = numberValidator();
 				} while (turns <= 0);
+
 				std::cout << "\nSetting turns to " << turns << ". Thank you." << std::endl;
-			} else if (turnsAnswer == 2) {
+
+			}
+            else if (turnsAnswer == 2) {
 				std::cout << "\nI like to keep things simple too, turns has been set to 10" << std::endl;
 				turns = 10;
-			} else {
+			}
+            else {
 				std::cout << "\nWhoops, I don't know that kind of number, try again please!" << std::endl;
 				turnsMenu.prompt();
 			}
@@ -94,19 +94,28 @@ int main() {
 
 		std::cout << "Time to build our players!" << std::endl;
 		for (int i = 0; i < 2; i++) {
-			std::cout << "For player " << i + 1 << ", ";
-			playerSides.prompt(-1);
-			sides = playerSides.getResponse();
+			do {
+                std::cout << "For player " << i + 1 << ", ";
+                playerSides.prompt(-1);
+                sides = playerSides.getResponse();
 
-			std::cout << "and as for Player " << i + 1 << " dice...";
-			playerDieType.prompt();
-			playerDie = playerDieType.getResponse();
+                if (sides < 2) {
+                    std::cout << "That number of sides is not possible, try another number.";
+                }
+            } while (sides < 2);
+
+            do {
+                std::cout << "And as for Player " << i + 1 << " dice...";
+                playerDieType.prompt();
+                playerDie = playerDieType.getResponse();
+
+                if (playerDie != 1 || playerDie != 2) {
+                    std::cout << "Sorry, I did not understand that response, try again." << std::endl;
+                }
+            } while(playerDie < 0 || playerDie > 2);
 
 			if (playerDie == 1) {
 				isLoaded = true;
-			}
-			else if (playerDie == 3) {
-				return 0;
 			}
 			 else {
 				isLoaded = false;
@@ -130,9 +139,6 @@ int main() {
 		playMenu.prompt();
 		playAgain = playMenu.getResponse();
 
-		if (playAgain == 3) {
-			return 0;
-		}
 
 	}while(playAgain == 1);
 
